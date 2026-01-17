@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LazyChara - 开发者主页</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <style>
+        :root {
+            /* MD3 Color Tokens - Generated based on Seed Color #66CCFF 
+               Using a light theme baseline
+            */
+            --md-sys-color-primary: #0094CC; /* 为了保证文字可读性，稍微加深了纯色 #66CCFF */
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-primary-container: #66CCFF; 
+            --md-sys-color-on-primary-container: #00334D;
+            
+            --md-sys-color-secondary: #4D8EAA;
+            --md-sys-color-secondary-container: #CEE5FF;
+            --md-sys-color-on-secondary-container: #001D33;
+
+            --md-sys-color-background: #F5FAFD;
+            --md-sys-color-on-background: #191C1E;
+            --md-sys-color-surface: #F5FAFD;
+            --md-sys-color-surface-container: #FFFFFF;
+            --md-sys-color-on-surface: #191C1E;
+            --md-sys-color-on-surface-variant: #40484C;
+            --md-sys-color-outline: #70787D;
+            --md-sys-color-outline-variant: #C0C8CC;
+
+            /* Elevation & Shape */
+            --md-sys-shape-corner-large: 28px;
+            --md-sys-shape-corner-medium: 16px;
+            --md-sys-shape-corner-full: 9999px;
+            
+            --md-sys-elevation-level1: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+            --md-sys-elevation-level2: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Noto Sans SC', 'Roboto', sans-serif;
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 24px;
+            box-sizing: border-box;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 64px 24px;
+            background-color: var(--md-sys-color-surface-container);
+            border-radius: var(--md-sys-shape-corner-large);
+            margin-bottom: 24px;
+            box-shadow: var(--md-sys-elevation-level1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 顶部装饰条 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(135deg, var(--md-sys-color-primary-container), #AEE2FF);
+            z-index: 0;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: var(--md-sys-shape-corner-full);
+            border: 4px solid var(--md-sys-color-surface-container);
+            margin-bottom: 16px;
+            z-index: 1;
+            background-color: #eee;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: 500; /* MD3 Display Small */
+            margin: 0 0 8px 0;
+            z-index: 1;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--md-sys-color-on-surface-variant);
+            margin-bottom: 24px;
+            z-index: 1;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        /* Badges/Tags */
+        .badge-container {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            border-radius: 8px;
+            background-color: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .badge .material-symbols-rounded {
+            font-size: 18px;
+            margin-right: 6px;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            padding: 0 24px;
+            border-radius: var(--md-sys-shape-corner-full);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            gap: 8px;
+            margin-top: 24px;
+            z-index: 1;
+        }
+
+        .btn-filled {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .btn-filled:hover {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            filter: brightness(1.05);
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .content-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--md-sys-color-surface-container);
+            border-radius: var(--md-sys-shape-corner-large);
+            padding: 24px;
+            box-shadow: var(--md-sys-elevation-level1); /* 静态时低海拔 */
+            transition: box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            box-shadow: var(--md-sys-elevation-level2); /* 悬浮时高海拔 */
+        }
+
+        .card-header {
+            font-size: 22px; /* MD3 Headline Small */
+            font-weight: 500;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .card-header .material-symbols-rounded {
+            margin-right: 12px;
+            color: var(--md-sys-color-primary);
+            font-size: 28px;
+        }
+
+        /* List Items */
+        .list-item {
+            display: flex;
+            align-items: start;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-content h3 {
+            margin: 0 0 4px 0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .list-content p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+        
+        .tech-pill {
+            display: inline-block;
+            font-size: 12px;
+            padding: 2px 8px;
+            border: 1px solid var(--md-sys-color-outline);
+            border-radius: 6px;
+            margin-right: 4px;
+            margin-top: 4px;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        /* Skills Section */
+        .skill-group {
+            margin-bottom: 16px;
+        }
+        .skill-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--md-sys-color-primary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .skill-bar-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        /* Link Styles */
+        a {
+            color: var(--md-sys-color-primary);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 12px;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="hero">
+        <img src="https://github.com/LazyChara.png" alt="LazyChara Avatar" class="avatar">
+        
+        <h1 class="hero-title">LazyChara</h1>
+        <div class="hero-subtitle">
+            “Lazy is besttttt” <br>
+            一名热爱开源的学生开发者，喜欢捣鼓 Java、Web 前端，偶尔研究 Python。
+        </div>
+
+        <div class="badge-container">
+            <div class="badge"><span class="material-symbols-rounded">location_on</span>中国香港</div>
+            <div class="badge"><span class="material-symbols-rounded">school</span>学生</div>
+            <div class="badge"><span class="material-symbols-rounded">terminal</span>Java / Web / Python</div>
+        </div>
+
+        <a href="https://github.com/LazyChara" target="_blank" class="btn btn-filled">
+            <span class="material-symbols-rounded">open_in_new</span>
+            访问 GitHub 主页
+        </a>
+    </div>
+
+    <div class="content-grid">
+        <div class="main-column">
+            <div class="card">
+                <div class="card-header">
+                    <span class="material-symbols-rounded">rocket_launch</span>
+                    精选项目
+                </div>
+
+                <div class="list-item">
+                    <div class="list-content">
+                        <h3>189-Soar-v8</h3>
+                        <p>基于 Java 开发的项目，LazyChara 的主要贡献之一。</p>
+                        <div>
+                            <span class="tech-pill">Java</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="list-content">
+                        <h3>WebRequester</h3>
+                        <p>一个 Java 编写的网络请求工具，简单易用。</p>
+                         <div>
+                            <span class="tech-pill">Java</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="list-content">
+                        <h3>EzWE</h3>
+                        <p>简单查看 Word 和 Excel 文件的 HTML 工具。</p>
+                         <div>
+                            <span class="tech-pill">HTML</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="list-item">
+                    <div class="list-content">
+                        <h3>Soar189-v8-with-sodiumGUI</h3>
+                        <p>使用了 JDK21 的 Soar 版本，带有 Sodium GUI 界面。</p>
+                         <div>
+                            <span class="tech-pill">Java</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="side-column">
+            
+            <div class="card" style="margin-bottom: 24px;">
+                <div class="card-header">
+                    <span class="material-symbols-rounded">person</span>
+                    关于我
+                </div>
+                <p style="margin-bottom: 12px; font-size: 14px; line-height: 1.6;">
+                    一个游戏痴，同时也是个喜欢“极限”的人。我喜欢玩以及写开源项目，但并不希望项目被作为他人盈利工具。
+                </p>
+                <p style="font-size: 14px; line-height: 1.6; color: var(--md-sys-color-on-surface-variant);">
+                    <span class="material-symbols-rounded" style="font-size: 16px; vertical-align: middle; margin-right: 4px;">mail</span>
+                    admin@zly.qzz.io
+                </p>
+                <p style="font-size: 14px; line-height: 1.6; margin-top: 8px;">
+                     <a href="https://space.bilibili.com/1994337933" target="_blank" style="display:flex; align-items:center;">
+                        <span class="material-symbols-rounded" style="font-size: 16px; margin-right: 4px;">play_circle</span>
+                        Bilibili 频道
+                     </a>
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="material-symbols-rounded">code</span>
+                    技术栈
+                </div>
+                
+                <div class="skill-group">
+                    <div class="skill-title">Frontend</div>
+                    <div class="skill-bar-container">
+                        <span class="tech-pill">HTML5</span>
+                        <span class="tech-pill">CSS3</span>
+                        <span class="tech-pill">JavaScript</span>
+                        <span class="tech-pill">Vue.js</span>
+                        <span class="tech-pill">React</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill-title">Backend</div>
+                    <div class="skill-bar-container">
+                        <span class="tech-pill">Java</span>
+                        <span class="tech-pill">Spring Boot</span>
+                        <span class="tech-pill">Python</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 LazyChara. Generated with MD3 Style.
+    </div>
+</div>
+
+</body>
+</html>
